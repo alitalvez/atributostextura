@@ -1,0 +1,21 @@
+GCC 5
+GOMP_CPU_AFFINITY=0,1,2,3,4,5
+SLURM_CPUS_PER_TASK 6
+Ener:     0.003086
+MDI:      0.088538
+Entr:     17.112265
+Var:      1607258.443933
+Con:      17939.106872
+Cor:      6690836.270954
+MSoma:    2262.739199
+SomaVar:  6411094.668859
+SomaEntr: 11.542225
+DifVar:   4764230.477583
+DifEntr:  7.541921
+311.702304
+srun: Job step aborted: Waiting up to 2 seconds for job step to finish.
+srun: got SIGCONT
+slurmd[nova202]: *** JOB 27848 CANCELLED AT 2016-01-19T15:29:50 ***
+srun: forcing job termination
+slurmd[nova202]: *** STEP 27848.1 CANCELLED AT 2016-01-19T15:29:50 ***
+srun: error: nova202: task 0: Terminated

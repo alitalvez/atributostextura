@@ -1,0 +1,57 @@
+#!/bin/bash
+#SBATCH -J GCC-OMP
+#SBATCH -p gpu
+#SBATCH -n 1
+#SBATCH -c 6
+#SBATCH --extra-node-info=1:6
+#SBATCH --ntasks-per-socket=1
+#SBATCH --exclusive
+
+echo "GCC 5"
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+echo -e "SLURM_CPUS_PER_TASK $SLURM_CPUS_PER_TASK"
+
+#source /opt/intel/Compiler/11.1/072/bin/iccvars.sh intel64
+
+echo "Energia"
+for i in {1..12}
+do
+srun ../MatrizCoocorrenciaOpenMP ../D4500.LEFT_CC.raw 4201 1831 12 1 1
+done
+
+echo "Contraste"
+for i in {1..12}
+do
+srun ../MatrizCoocorrenciaOpenMP ../D4500.LEFT_CC.raw 4201 1831 12 1 2
+done
+
+echo "Correlacao"
+for i in {1..12}
+do
+srun ../MatrizCoocorrenciaOpenMP ../D4500.LEFT_CC.raw 4201 1831 12 1 3
+done
+
+echo "Variancia"
+for i in {1..12}
+do
+srun ../MatrizCoocorrenciaOpenMP ../D4500.LEFT_CC.raw 4201 1831 12 1 4
+done
+
+echo "MDI"
+for i in {1..12}
+do
+srun ../MatrizCoocorrenciaOpenMP ../D4500.LEFT_CC.raw 4201 1831 12 1 5
+done
+
+echo "Entropia"
+for i in {1..12}
+do
+srun ../MatrizCoocorrenciaOpenMP ../D4500.LEFT_CC.raw 4201 1831 12 1 6
+done
+
+echo "Soma Media"
+for i in {1..12}
+do
+srun ../MatrizCoocorrenciaOpenMP ../D4500.LEFT_CC.raw 4201 1831 12 1 7
+done

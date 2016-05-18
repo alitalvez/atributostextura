@@ -1,0 +1,354 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 14.89      0.91     0.91  7692031     0.00     0.00  hex2int(char*)
+ 12.09      1.64     0.74 123072496     0.00     0.00  std::bitset<8ul>::reference::reference(std::bitset<8ul>&, unsigned long)
+ 10.04      2.25     0.61 123072496     0.00     0.00  std::bitset<8ul>::reference::operator bool() const
+  9.54      2.83     0.58        1     0.58     1.28  MatrizCoocorrencia::calcularMatrizCoN(double*, int)
+  8.97      3.38     0.55 246144992     0.00     0.00  std::_Base_bitset<1ul>::_S_whichbit(unsigned long)
+  5.76      3.73     0.35 123072496     0.00     0.00  std::bitset<8ul>::operator[](unsigned long)
+  5.59      4.07     0.34 123072496     0.00     0.00  __gnu_cxx::__promote_2<int, float, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<int, float>(int, float)
+  4.69      4.35     0.29 123072496     0.00     0.00  std::_Base_bitset<1ul>::_S_maskbit(unsigned long)
+  4.11      4.60     0.25  7692031     0.00     0.00  MatrizCoocorrencia::mc0_(unsigned short*, int, int, int*)
+  3.62      4.82     0.22 123072496     0.00     0.00  std::bitset<8ul>::reference::~reference()
+  2.63      4.98     0.16 15384062     0.00     0.00  std::_Base_bitset<1ul>::_Base_bitset(unsigned long)
+  2.47      5.13     0.15 123072496     0.00     0.00  std::_Base_bitset<1ul>::_M_getword(unsigned long)
+  2.47      5.28     0.15  7692031     0.00     0.00  MatrizCoocorrencia::mc45_(unsigned short*, int, int, int*)
+  2.47      5.43     0.15  7692031     0.00     0.00  MatrizCoocorrencia::mc90_(unsigned short*, int, int, int*)
+  2.47      5.58     0.15  7692031     0.00     0.00  MatrizCoocorrencia::mc135_(unsigned short*, int, int, int*)
+  1.81      5.69     0.11 15384062     0.00     0.00  std::bitset<8ul>::bitset(unsigned long)
+  1.65      5.79     0.10 15384062     0.00     0.00  std::bitset<8ul>::bitset()
+  1.32      5.87     0.08 15384062     0.00     0.00  std::_Base_bitset<1ul>::_Base_bitset()
+  1.32      5.95     0.08        1     0.08     4.80  ReadImage::vectorImage()
+  0.99      6.01     0.06 15384062     0.00     0.00  std::_Sanitize<8ul>::_S_do_sanitize(unsigned long&)
+  0.58      6.05     0.04 15384062     0.00     0.00  std::bitset<8ul>::_M_do_sanitize()
+  0.49      6.08     0.03 15384062     0.00     0.00  std::_Base_bitset<1ul>::_M_hiword()
+  0.08      6.08     0.01        1     0.01     0.01  _GLOBAL__sub_I__ZN11GerarMatrizD2Ev
+  0.00      6.08     0.00        2     0.00     0.00  __gnu_cxx::__promote_2<int, int, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type>::__type std::pow<int, int>(int, int)
+  0.00      6.08     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z7hex2intPc
+  0.00      6.08     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN3cmp7comparaEPdS0_i
+  0.00      6.08     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN5atCpu7CalPxpyEv
+  0.00      6.08     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN9ReadImageC2EPctt
+  0.00      6.08     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      6.08     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      6.08     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      6.08     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      6.08     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      6.08     0.00        1     0.00     0.00  MatrizCoocorrencia::MatrizCoocorrencia(sImage*)
+  0.00      6.08     0.00        1     0.00     0.00  MatrizCoocorrencia::~MatrizCoocorrencia()
+  0.00      6.08     0.00        1     0.00     0.00  CpuTimer::ElapsedSec()
+  0.00      6.08     0.00        1     0.00     0.00  CpuTimer::Stop()
+  0.00      6.08     0.00        1     0.00     0.00  CpuTimer::Start()
+  0.00      6.08     0.00        1     0.00     0.00  CpuTimer::CpuTimer()
+  0.00      6.08     0.00        1     0.00     0.00  CpuTimer::~CpuTimer()
+  0.00      6.08     0.00        1     0.00     0.00  ReadImage::ReadImage(char*, unsigned short, unsigned short)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.16% of 6.08 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     99.9    0.00    6.08                 main [1]
+                0.08    4.72       1/1           ReadImage::vectorImage() [2]
+                0.58    0.70       1/1           MatrizCoocorrencia::calcularMatrizCoN(double*, int) [5]
+                0.00    0.00       1/2           __gnu_cxx::__promote_2<int, int, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type>::__type std::pow<int, int>(int, int) [32]
+                0.00    0.00       1/1           ReadImage::ReadImage(char*, unsigned short, unsigned short) [49]
+                0.00    0.00       1/1           MatrizCoocorrencia::MatrizCoocorrencia(sImage*) [42]
+                0.00    0.00       1/1           CpuTimer::CpuTimer() [47]
+                0.00    0.00       1/1           CpuTimer::Start() [46]
+                0.00    0.00       1/1           CpuTimer::Stop() [45]
+                0.00    0.00       1/1           CpuTimer::ElapsedSec() [44]
+                0.00    0.00       1/1           CpuTimer::~CpuTimer() [48]
+                0.00    0.00       1/1           MatrizCoocorrencia::~MatrizCoocorrencia() [43]
+-----------------------------------------------
+                0.08    4.72       1/1           main [1]
+[2]     78.9    0.08    4.72       1         ReadImage::vectorImage() [2]
+                0.91    3.81 7692031/7692031     hex2int(char*) [3]
+-----------------------------------------------
+                0.91    3.81 7692031/7692031     ReadImage::vectorImage() [2]
+[3]     77.5    0.91    3.81 7692031         hex2int(char*) [3]
+                0.35    1.16 123072496/123072496     std::bitset<8ul>::operator[](unsigned long) [4]
+                0.61    0.56 123072496/123072496     std::bitset<8ul>::reference::operator bool() const [6]
+                0.11    0.29 15384062/15384062     std::bitset<8ul>::bitset(unsigned long) [10]
+                0.34    0.00 123072496/123072496     __gnu_cxx::__promote_2<int, float, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<int, float>(int, float) [11]
+                0.22    0.00 123072496/123072496     std::bitset<8ul>::reference::~reference() [13]
+                0.10    0.08 15384062/15384062     std::bitset<8ul>::bitset() [14]
+-----------------------------------------------
+                0.35    1.16 123072496/123072496     hex2int(char*) [3]
+[4]     24.8    0.35    1.16 123072496         std::bitset<8ul>::operator[](unsigned long) [4]
+                0.74    0.42 123072496/123072496     std::bitset<8ul>::reference::reference(std::bitset<8ul>&, unsigned long) [7]
+-----------------------------------------------
+                0.58    0.70       1/1           main [1]
+[5]     21.1    0.58    0.70       1         MatrizCoocorrencia::calcularMatrizCoN(double*, int) [5]
+                0.25    0.00 7692031/7692031     MatrizCoocorrencia::mc0_(unsigned short*, int, int, int*) [12]
+                0.15    0.00 7692031/7692031     MatrizCoocorrencia::mc45_(unsigned short*, int, int, int*) [17]
+                0.15    0.00 7692031/7692031     MatrizCoocorrencia::mc90_(unsigned short*, int, int, int*) [18]
+                0.15    0.00 7692031/7692031     MatrizCoocorrencia::mc135_(unsigned short*, int, int, int*) [19]
+-----------------------------------------------
+                0.61    0.56 123072496/123072496     hex2int(char*) [3]
+[6]     19.2    0.61    0.56 123072496         std::bitset<8ul>::reference::operator bool() const [6]
+                0.29    0.27 123072496/123072496     std::_Base_bitset<1ul>::_S_maskbit(unsigned long) [8]
+-----------------------------------------------
+                0.74    0.42 123072496/123072496     std::bitset<8ul>::operator[](unsigned long) [4]
+[7]     19.0    0.74    0.42 123072496         std::bitset<8ul>::reference::reference(std::bitset<8ul>&, unsigned long) [7]
+                0.27    0.00 123072496/246144992     std::_Base_bitset<1ul>::_S_whichbit(unsigned long) [9]
+                0.15    0.00 123072496/123072496     std::_Base_bitset<1ul>::_M_getword(unsigned long) [16]
+-----------------------------------------------
+                0.29    0.27 123072496/123072496     std::bitset<8ul>::reference::operator bool() const [6]
+[8]      9.2    0.29    0.27 123072496         std::_Base_bitset<1ul>::_S_maskbit(unsigned long) [8]
+                0.27    0.00 123072496/246144992     std::_Base_bitset<1ul>::_S_whichbit(unsigned long) [9]
+-----------------------------------------------
+                0.27    0.00 123072496/246144992     std::_Base_bitset<1ul>::_S_maskbit(unsigned long) [8]
+                0.27    0.00 123072496/246144992     std::bitset<8ul>::reference::reference(std::bitset<8ul>&, unsigned long) [7]
+[9]      9.0    0.55    0.00 246144992         std::_Base_bitset<1ul>::_S_whichbit(unsigned long) [9]
+-----------------------------------------------
+                0.11    0.29 15384062/15384062     hex2int(char*) [3]
+[10]     6.5    0.11    0.29 15384062         std::bitset<8ul>::bitset(unsigned long) [10]
+                0.16    0.00 15384062/15384062     std::_Base_bitset<1ul>::_Base_bitset(unsigned long) [15]
+                0.04    0.09 15384062/15384062     std::bitset<8ul>::_M_do_sanitize() [20]
+-----------------------------------------------
+                0.34    0.00 123072496/123072496     hex2int(char*) [3]
+[11]     5.6    0.34    0.00 123072496         __gnu_cxx::__promote_2<int, float, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<int, float>(int, float) [11]
+-----------------------------------------------
+                0.25    0.00 7692031/7692031     MatrizCoocorrencia::calcularMatrizCoN(double*, int) [5]
+[12]     4.1    0.25    0.00 7692031         MatrizCoocorrencia::mc0_(unsigned short*, int, int, int*) [12]
+-----------------------------------------------
+                0.22    0.00 123072496/123072496     hex2int(char*) [3]
+[13]     3.6    0.22    0.00 123072496         std::bitset<8ul>::reference::~reference() [13]
+-----------------------------------------------
+                0.10    0.08 15384062/15384062     hex2int(char*) [3]
+[14]     3.0    0.10    0.08 15384062         std::bitset<8ul>::bitset() [14]
+                0.08    0.00 15384062/15384062     std::_Base_bitset<1ul>::_Base_bitset() [21]
+-----------------------------------------------
+                0.16    0.00 15384062/15384062     std::bitset<8ul>::bitset(unsigned long) [10]
+[15]     2.6    0.16    0.00 15384062         std::_Base_bitset<1ul>::_Base_bitset(unsigned long) [15]
+-----------------------------------------------
+                0.15    0.00 123072496/123072496     std::bitset<8ul>::reference::reference(std::bitset<8ul>&, unsigned long) [7]
+[16]     2.5    0.15    0.00 123072496         std::_Base_bitset<1ul>::_M_getword(unsigned long) [16]
+-----------------------------------------------
+                0.15    0.00 7692031/7692031     MatrizCoocorrencia::calcularMatrizCoN(double*, int) [5]
+[17]     2.5    0.15    0.00 7692031         MatrizCoocorrencia::mc45_(unsigned short*, int, int, int*) [17]
+-----------------------------------------------
+                0.15    0.00 7692031/7692031     MatrizCoocorrencia::calcularMatrizCoN(double*, int) [5]
+[18]     2.5    0.15    0.00 7692031         MatrizCoocorrencia::mc90_(unsigned short*, int, int, int*) [18]
+-----------------------------------------------
+                0.15    0.00 7692031/7692031     MatrizCoocorrencia::calcularMatrizCoN(double*, int) [5]
+[19]     2.5    0.15    0.00 7692031         MatrizCoocorrencia::mc135_(unsigned short*, int, int, int*) [19]
+-----------------------------------------------
+                0.04    0.09 15384062/15384062     std::bitset<8ul>::bitset(unsigned long) [10]
+[20]     2.1    0.04    0.09 15384062         std::bitset<8ul>::_M_do_sanitize() [20]
+                0.06    0.00 15384062/15384062     std::_Sanitize<8ul>::_S_do_sanitize(unsigned long&) [22]
+                0.03    0.00 15384062/15384062     std::_Base_bitset<1ul>::_M_hiword() [23]
+-----------------------------------------------
+                0.08    0.00 15384062/15384062     std::bitset<8ul>::bitset() [14]
+[21]     1.3    0.08    0.00 15384062         std::_Base_bitset<1ul>::_Base_bitset() [21]
+-----------------------------------------------
+                0.06    0.00 15384062/15384062     std::bitset<8ul>::_M_do_sanitize() [20]
+[22]     1.0    0.06    0.00 15384062         std::_Sanitize<8ul>::_S_do_sanitize(unsigned long&) [22]
+-----------------------------------------------
+                0.03    0.00 15384062/15384062     std::bitset<8ul>::_M_do_sanitize() [20]
+[23]     0.5    0.03    0.00 15384062         std::_Base_bitset<1ul>::_M_hiword() [23]
+-----------------------------------------------
+                0.01    0.00       1/1           __do_global_ctors_aux [25]
+[24]     0.1    0.01    0.00       1         _GLOBAL__sub_I__ZN11GerarMatrizD2Ev [24]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [39]
+-----------------------------------------------
+                                                 <spontaneous>
+[25]     0.1    0.00    0.01                 __do_global_ctors_aux [25]
+                0.01    0.00       1/1           _GLOBAL__sub_I__ZN11GerarMatrizD2Ev [24]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN3cmp7comparaEPdS0_i [34]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN5atCpu7CalPxpyEv [35]
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z7hex2intPc [33]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN9ReadImageC2EPctt [36]
+-----------------------------------------------
+                0.00    0.00       1/2           main [1]
+                0.00    0.00       1/2           MatrizCoocorrencia::MatrizCoocorrencia(sImage*) [42]
+[32]     0.0    0.00    0.00       2         __gnu_cxx::__promote_2<int, int, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type>::__type std::pow<int, int>(int, int) [32]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [25]
+[33]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z7hex2intPc [33]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [40]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [25]
+[34]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN3cmp7comparaEPdS0_i [34]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [37]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [25]
+[35]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN5atCpu7CalPxpyEv [35]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [38]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [25]
+[36]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN9ReadImageC2EPctt [36]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [41]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN3cmp7comparaEPdS0_i [34]
+[37]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [37]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN5atCpu7CalPxpyEv [35]
+[38]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [38]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN11GerarMatrizD2Ev [24]
+[39]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [39]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z7hex2intPc [33]
+[40]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [40]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN9ReadImageC2EPctt [36]
+[41]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [41]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[42]     0.0    0.00    0.00       1         MatrizCoocorrencia::MatrizCoocorrencia(sImage*) [42]
+                0.00    0.00       1/2           __gnu_cxx::__promote_2<int, int, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type>::__type std::pow<int, int>(int, int) [32]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[43]     0.0    0.00    0.00       1         MatrizCoocorrencia::~MatrizCoocorrencia() [43]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[44]     0.0    0.00    0.00       1         CpuTimer::ElapsedSec() [44]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[45]     0.0    0.00    0.00       1         CpuTimer::Stop() [45]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[46]     0.0    0.00    0.00       1         CpuTimer::Start() [46]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[47]     0.0    0.00    0.00       1         CpuTimer::CpuTimer() [47]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[48]     0.0    0.00    0.00       1         CpuTimer::~CpuTimer() [48]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[49]     0.0    0.00    0.00       1         ReadImage::ReadImage(char*, unsigned short, unsigned short) [49]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+  [33] _GLOBAL__sub_I__Z7hex2intPc [18] MatrizCoocorrencia::mc90_(unsigned short*, int, int, int*) [9] std::_Base_bitset<1ul>::_S_whichbit(unsigned long)
+  [24] _GLOBAL__sub_I__ZN11GerarMatrizD2Ev [19] MatrizCoocorrencia::mc135_(unsigned short*, int, int, int*) [23] std::_Base_bitset<1ul>::_M_hiword()
+  [34] _GLOBAL__sub_I__ZN3cmp7comparaEPdS0_i [42] MatrizCoocorrencia::MatrizCoocorrencia(sImage*) [15] std::_Base_bitset<1ul>::_Base_bitset(unsigned long)
+  [35] _GLOBAL__sub_I__ZN5atCpu7CalPxpyEv [43] MatrizCoocorrencia::~MatrizCoocorrencia() [21] std::_Base_bitset<1ul>::_Base_bitset()
+  [36] _GLOBAL__sub_I__ZN9ReadImageC2EPctt [44] CpuTimer::ElapsedSec() [20] std::bitset<8ul>::_M_do_sanitize()
+  [37] __static_initialization_and_destruction_0(int, int) [45] CpuTimer::Stop() [7] std::bitset<8ul>::reference::reference(std::bitset<8ul>&, unsigned long)
+  [38] __static_initialization_and_destruction_0(int, int) [46] CpuTimer::Start() [13] std::bitset<8ul>::reference::~reference()
+  [39] __static_initialization_and_destruction_0(int, int) [47] CpuTimer::CpuTimer() [14] std::bitset<8ul>::bitset()
+  [40] __static_initialization_and_destruction_0(int, int) [48] CpuTimer::~CpuTimer() [10] std::bitset<8ul>::bitset(unsigned long)
+  [41] __static_initialization_and_destruction_0(int, int) [2] ReadImage::vectorImage() [4] std::bitset<8ul>::operator[](unsigned long)
+   [3] hex2int(char*)         [49] ReadImage::ReadImage(char*, unsigned short, unsigned short) [22] std::_Sanitize<8ul>::_S_do_sanitize(unsigned long&)
+   [5] MatrizCoocorrencia::calcularMatrizCoN(double*, int) [6] std::bitset<8ul>::reference::operator bool() const [11] __gnu_cxx::__promote_2<int, float, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<float, std::__is_integer<float>::__value>::__type>::__type std::pow<int, float>(int, float)
+  [12] MatrizCoocorrencia::mc0_(unsigned short*, int, int, int*) [16] std::_Base_bitset<1ul>::_M_getword(unsigned long) [32] __gnu_cxx::__promote_2<int, int, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type>::__type std::pow<int, int>(int, int)
+  [17] MatrizCoocorrencia::mc45_(unsigned short*, int, int, int*) [8] std::_Base_bitset<1ul>::_S_maskbit(unsigned long)
