@@ -10,7 +10,7 @@ double px(int i)
     int tam  = 4;
     double px = 0.0;
 
-//#pragma omp parallel for reduction(+:px)
+#pragma omp parallel for reduction(+:px)
     for(int k = 0; k < tam; ++k)
         px += matrizCoN[i * tam + k];
     return px;
@@ -21,7 +21,7 @@ double py(int j)
     int tam = 4;
     double py = 0.0;
 
-//#pragma omp parallel for reduction(+:py)
+#pragma omp parallel for reduction(+:py)
     for(int k = 0; k < tam; ++k)
         py += matrizCoN[k * tam + j];
     return py;
@@ -31,10 +31,14 @@ double hxy()
 {
     int tTotal = 16;
     double hxy = 0.0;
-#pragma omp parallel for reduction(+:hxy)
+    double rlog = 0.0;
+#pragma omp parallel for reduction(+:hxy) private(rlog)
     for(int k = 0; k < tTotal; ++k)
         if(matrizCoN[k])
-            hxy += matrizCoN[k] * log(matrizCoN[k]);
+        {
+            rlog = log(matrizCoN[k]);
+            hxy += matrizCoN[k] * rlog;
+        }
     return hxy * -1;
 }
 
@@ -46,8 +50,9 @@ double hxy2()
 
     double rpx = 0.0;
     double rpy = 0.0;
+    double rlog = 0.0;
 
-#pragma omp parallel for reduction(+:hxy2)
+#pragma omp parallel for reduction(+:hxy2) private(rpx, rpy, rlog)
     for(int k = 0; k < tam; ++k)
     {
         for(int h = 0; h < tam; ++h)
@@ -56,7 +61,8 @@ double hxy2()
             rpy = py(h);
             if(rpx && rpy)
             {
-                hxy2 += rpx * rpy * log(rpx * rpy);
+                rlog = log(rpx * rpy);
+                hxy2 += rpx * rpy * rlog;
             }
         }
     }
@@ -406,6 +412,10 @@ double medidasCorrelacao2()
 
     rhxy2 = hxy2();
     rhxy = hxy();
+
+    std::cout << "HXY2 = " << rhxy2 << std::endl;
+    std::cout << "HXY = " << rhxy << std::endl;
+
     mc = std::sqrt(1 - std::exp(-2 * abs(rhxy2 - entropia())));
 
     return mc;

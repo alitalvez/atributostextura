@@ -80,25 +80,9 @@ void Haralick::calcularMatrizCoN(double * __restrict__ matrizCoN, int distancia)
     printf("Soma CPU: %d \n", soma);
 
     //#pragma omp simd
-    //#pragma omp parallel for simd
-    //for(int i = 0; i < TAM_TOTAL; ++i)
-    //    matrizCoN[i] = 1.0*matrizCoF[i] / soma;
-    matrizCoN[0] = 0.25;
-    matrizCoN[1] = 0;
-    matrizCoN[2] = 0.083;
-    matrizCoN[3] = 0;
-    matrizCoN[4] = 0;
-    matrizCoN[5] = 0.167;
-    matrizCoN[6] = 0.083;
-    matrizCoN[7] = 0;
-    matrizCoN[8] = 0.083;
-    matrizCoN[9] = 0.083;
-    matrizCoN[10] = 0.083;
-    matrizCoN[11] = 0.083;
-    matrizCoN[12] = 0;
-    matrizCoN[13] = 0;
-    matrizCoN[14] = 0.083;
-    matrizCoN[15] = 0;
+    #pragma omp parallel for simd
+    for(int i = 0; i < TAM_TOTAL; ++i)
+        matrizCoN[i] = 1.0*matrizCoF[i] / soma;
     //normalizar(matrizCoF, matrizCoN, N*N);
 
 //    delete [] matrizCoTmp;
@@ -521,7 +505,7 @@ double Haralick::correlacao()
         double tmp = (i - media) * (i - media);
 #pragma omp simd reduction(+:var1,cor1)
         for (int j = 0; j < tam; ++j) {
-            cor1 += (i*j) * (i - media) * (j - media) * matrizCoN[i * tam + j];
+            cor1 += (i - media) * (j - media) * matrizCoN[i * tam + j];
             var1 += tmp * matrizCoN[i * tam + j];
         }
         var += var1;
@@ -820,7 +804,7 @@ double Haralick::hx()
     const double * __restrict__ matrizCoN = this->matriz;
     double rpx = 0.0;
 
-#pragma omp parallel for reduction(+:hx)
+#pragma omp parallel for reduction(+:hx) private(rpx)
     for(int h = 0; h < tam; ++h)
     {
         rpx = px(h);
@@ -838,7 +822,7 @@ double Haralick::hy()
     const double * __restrict__ matrizCoN = this->matriz;
     double rpy = 0.0;
 
-#pragma omp parallel for reduction(+:hy)
+#pragma omp parallel for reduction(+:hy) private(rpy)
     for(int h = 0; h < tam; ++h)
     {
         rpy = py(h);
@@ -852,11 +836,15 @@ double Haralick::hxy()
 {
     int tTotal = this->Ng * this->Ng;
     double hxy = 0.0;
+    double rlog = 0.0;
     const double * __restrict__ matrizCoN = this->matriz;
-#pragma omp parallel for reduction(+:hxy)
+#pragma omp parallel for reduction(+:hxy) private(rlog)
     for(int k = 0; k < tTotal; ++k)
         if(matrizCoN[k])
-            hxy += matrizCoN[k] * log(matrizCoN[k]);
+        {
+            rlog = log(matrizCoN[k]);
+            hxy += matrizCoN[k] * rlog;
+        }
     return hxy * -1;
 }
 
@@ -881,8 +869,9 @@ double Haralick::hxy2()
     const double * __restrict__ matrizCoN = this->matriz;
     double rpx = 0.0;
     double rpy = 0.0;
+    double rlog = 0.0;
 
-#pragma omp parallel for reduction(+:hxy2)
+#pragma omp parallel for reduction(+:hxy2) private(rpx, rpy, rlog)
     for(int k = 0; k < tam; ++k)
     {
         for(int h = 0; h < tam; ++h)
@@ -890,7 +879,10 @@ double Haralick::hxy2()
             rpx = px(k);
             rpy = py(h);
             if(rpx && rpy)
-                hxy2 += rpx * rpy * log(rpx * rpy);
+            {
+                rlog = log(rpx * rpy);
+                hxy2 += rpx * rpy * rlog;
+            }
         }
     }
     return hxy2 * -1;
@@ -898,15 +890,13 @@ double Haralick::hxy2()
 
 double Haralick::medidasCorrelacao1()
 {
-    double rmax = 0.0;
     double rhxy = 0.0;
     double rhxy1 = 0.0;
     double mc = 0.0;
 
     rhxy = hxy();
     rhxy1 = hxy1();
-    rmax = std::max(hx(), hy());
-    mc = (rhxy - rhxy1) / rmax;
+    mc = (entropia() - rhxy1) / std::max(hx(), hy());
 
     return mc;
 }
@@ -919,7 +909,8 @@ double Haralick::medidasCorrelacao2()
 
     rhxy2 = hxy2();
     rhxy = hxy();
-    mc = std::sqrt(1 - std::exp(-2 * (rhxy2 - rhxy)));
+
+    mc = std::sqrt(1 - std::exp(-2 * abs(rhxy2 - entropia())));
 
     return mc;
 }

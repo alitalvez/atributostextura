@@ -1,4 +1,7 @@
-//g++ -fopenmp -O3 -mavx libHara.o libRead.o libGera.o libPy.o libAt.o main.cpp -o tentativa.o
+//g++ -fopenmp -O3 -mavx libHara.o libRead.o libGera.o libPy.o libAt.o main.cpp -o MatrizCoocorrenciaOpenMP
+
+//./MatrizCoocorrenciaOpenMP ./D4500.LEFT_CC.raw 4201 1831 12 1 0
+
 
 //#include <QCoreApplication>
 #include <iostream>
