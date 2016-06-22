@@ -427,14 +427,14 @@ double Haralick::energia()
     double energia = 0.0;
     const double * __restrict__ matrizCoN = this->matriz;
 
-    //Tempo.Start();
+    Tempo.Start();
 #pragma omp parallel for simd reduction(+:energia)
     for(int i = 0; i < tTotal; ++i) {
         energia +=  matrizCoN[i] * matrizCoN[i];
     }
 
-    //Tempo.Stop();
-    //Tempo.ElapsedSec();
+    Tempo.Stop();
+    Tempo.ElapsedSec();
 
     return energia;
 }
@@ -445,7 +445,7 @@ double Haralick::contraste()
     double contraste = 0.0;
     const double * __restrict__ matrizCoN = this->matriz;
 
-    //Tempo.Start();
+    Tempo.Start();
 #pragma omp parallel for reduction(+:contraste)
     for (int i = 0; i < tam; ++i) {
         double con = 0.0;
@@ -455,8 +455,8 @@ double Haralick::contraste()
         }
         contraste += con;
     }
-    //Tempo.Stop();
-    //Tempo.ElapsedSec();
+    Tempo.Stop();
+    Tempo.ElapsedSec();
 
     return contraste;
 }
@@ -494,7 +494,7 @@ double Haralick::correlacao()
     double var = 0.0;
     const double * __restrict__ matrizCoN = this->matriz;
 
-    //Tempo.Start();
+    Tempo.Start();
 
     double media = mediaH(matrizCoN, tam);
 
@@ -511,8 +511,8 @@ double Haralick::correlacao()
         var += var1;
         cor += cor1;
     }
-    //Tempo.Stop();
-    //Tempo.ElapsedSec();
+    Tempo.Stop();
+    Tempo.ElapsedSec();
 
     return cor/var;
 }
@@ -524,7 +524,7 @@ double Haralick::variancia()
     double variancia = 0.0;
     const double * __restrict__ matrizCoN = this->matriz;
 
-    //Tempo.Start();
+    Tempo.Start();
 
     //double media = this->Media; //mediaH(matrizCoN, tam);
     double media = mediaH(matrizCoN, TAM);
@@ -538,8 +538,8 @@ double Haralick::variancia()
             var += tmp * matrizCoN[i * TAM + j];
         variancia += var;
     }
-    //Tempo.Stop();
-    //Tempo.ElapsedSec();
+    Tempo.Stop();
+    Tempo.ElapsedSec();
 
     return variancia;
 }
@@ -550,7 +550,7 @@ double Haralick::mdi()
     double mdi = 0.0;
     const double * __restrict__ matrizCoN = this->matriz;
 
-    //Tempo.Start();
+    Tempo.Start();
 #pragma omp parallel for reduction(+:mdi)
     for(int i = 0; i < tam; ++i) {
         double mdi1 = 0.0;
@@ -560,8 +560,8 @@ double Haralick::mdi()
         }
         mdi += mdi1;
     }
-    //Tempo.Stop();
-    //Tempo.ElapsedSec();
+    Tempo.Stop();
+    Tempo.ElapsedSec();
 
     return mdi;
 }
@@ -589,13 +589,13 @@ double Haralick::mediaSoma()
     double resultado = 0.0;
     const double * __restrict__ matrizCoN = this->matriz;
 
-    //Tempo.Start();
+    Tempo.Start();
 #pragma omp parallel for reduction(+:resultado)
     for (int k = 0; k <= tTotal; ++k) {
         resultado += k * P_x_mais_y(matrizCoN, k, tam);
     }
-    //Tempo.Stop();
-    //Tempo.ElapsedSec();
+    Tempo.Stop();
+    Tempo.ElapsedSec();
 
     return resultado;
 }
@@ -626,7 +626,7 @@ double Haralick::varianciaSoma()
     double varSoma = 0.0;
     const double * __restrict__ matrizCoN = this->matriz;
 
-    //Tempo.Start();
+    Tempo.Start();
 
     mediaS = mediaSoma();
 
@@ -634,8 +634,8 @@ double Haralick::varianciaSoma()
     for (int k = 0; k <= tTotal; ++k) {
         varSoma += (k - mediaS) * (k - mediaS) * P_x_mais_y(matrizCoN, k, tam);
     }
-    //Tempo.Stop();
-    //Tempo.ElapsedSec();
+    Tempo.Stop();
+    Tempo.ElapsedSec();
 
     return varSoma;
 }
@@ -665,15 +665,15 @@ double Haralick::somaEntropia()
     double somaEnt = 0.0;
     const double * __restrict__ matrizCoN = this->matriz;
 
-    //Tempo.Start();
+    Tempo.Start();
 #pragma omp parallel for reduction(+:somaEnt)
     for (int k = 0; k <= tTotal; ++k) {
         double tmp = P_x_mais_y(matrizCoN, k, tam);
         if (tmp > 0.0)
             somaEnt += tmp * log(tmp);
     }
-    //Tempo.Stop();
-    //Tempo.ElapsedSec();
+    Tempo.Stop();
+    Tempo.ElapsedSec();
 
     return (-1.0) * somaEnt;
 }
@@ -684,15 +684,15 @@ double Haralick::entropia()
     double entropia = 0.0;
     const double * __restrict__ matrizCoN = this->matriz;
 
-    //Tempo.Start();
+    Tempo.Start();
 #pragma omp parallel for simd reduction(+:entropia)
 //#pragma omp simd reduction(+:entropia)
     for (int i = 0; i < tTotal; ++i) {
         double valor = matrizCoN[i];
         entropia += (valor > 0.0) ? valor * log(valor) : 0.0;
     }
-    //Tempo.Stop();
-    //Tempo.ElapsedSec();
+    Tempo.Stop();
+    Tempo.ElapsedSec();
 
     return entropia * (-1.0);
 }
@@ -716,7 +716,7 @@ double Haralick::varianciaDiferenca()
     double resultado = 0.0;
     const double * __restrict__ matrizCoN = this->matriz;
 
-    //Tempo.Start();
+    Tempo.Start();
 
 /****/
 #pragma omp parallel for
@@ -731,8 +731,8 @@ double Haralick::varianciaDiferenca()
         resultado += ( (k - k*pxmy_temp[k])*(k - k*pxmy_temp[k]) ) * pxmy_temp[k] ;
     }
 
-    //Tempo.Stop();
-    //Tempo.ElapsedSec();
+    Tempo.Stop();
+    Tempo.ElapsedSec();
 
     return resultado;
 }
@@ -759,7 +759,7 @@ double Haralick::diferencaEntropia()
     double difEnt = 0.0;
     const double * __restrict__ matrizCoN = this->matriz;
 
-    //Tempo.Start();
+    Tempo.Start();
 
 #pragma omp parallel for reduction(+:difEnt)
     for (int k = 0; k < tam; ++k) {
@@ -767,8 +767,8 @@ double Haralick::diferencaEntropia()
         if (tmp > 0.0)
             difEnt += tmp * log(tmp);
     }
-    //Tempo.Stop();
-    //Tempo.ElapsedSec();
+    Tempo.Stop();
+    Tempo.ElapsedSec();
 
     return (-1.0) * difEnt;
 }
@@ -894,9 +894,14 @@ double Haralick::medidasCorrelacao1()
     double rhxy1 = 0.0;
     double mc = 0.0;
 
+    Tempo.Start();
+
     rhxy = hxy();
     rhxy1 = hxy1();
     mc = (entropia() - rhxy1) / std::max(hx(), hy());
+
+    Tempo.Stop();
+    Tempo.ElapsedSec();
 
     return mc;
 }
@@ -907,10 +912,15 @@ double Haralick::medidasCorrelacao2()
     double rhxy2 = 0.0;
     double rhxy = 0.0;
 
+    Tempo.Start();
+
     rhxy2 = hxy2();
     rhxy = hxy();
 
     mc = std::sqrt(1 - std::exp(-2 * abs(rhxy2 - entropia())));
+
+    Tempo.Stop();
+    Tempo.ElapsedSec();
 
     return mc;
 }
